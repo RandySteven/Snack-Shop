@@ -17,5 +17,6 @@ class ProductController extends Controller
         $attr['image'] = $request->file('image')->store("images/products");
         $attr['category_id'] = $request->get('category_id');
         Product::create($attr);
+        return back()->with('success', 'Success to add product');
     }
 }

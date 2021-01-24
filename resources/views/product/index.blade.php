@@ -10,6 +10,7 @@
                             <th>Category</th>
                             <th>Price</th>
                             <th>Stock</th>
+                            <th>Update Stock</th>
                             <th>Add to Cart</th>
                         </thead>
                         <tbody>
@@ -28,11 +29,21 @@
                                     <td>
                                         {{ $product->stock }}
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        <a href="" class="bg bg-green-700 hover:bg-green-600">Add Stock</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
+
+                    @auth
+                        @if (Auth::user()->hasRole('Admin'))
+                            <div class="my-4">
+                                @include('product.create')
+                            </div>
+                        @endif
+                    @endauth
                 </div>
             </div>
         </div>
