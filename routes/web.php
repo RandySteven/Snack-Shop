@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +31,13 @@ Route::middleware('auth')->group(function(){
 
     Route::post('add-to-cart', [CartController::class, 'add'])->name('add.cart');
     Route::delete('delete-from-cart/{cart:product_id}', [CartController::class, 'delete'])->name('add.delete');
+
+    Route::prefix('staffs')->group(function(){
+        Route::get('', [StaffController::class, 'index'])->name('staff.index');
+        Route::get('edit/{user:name}', [StaffController::class, 'edit'])->name('staff.edit');
+    });
+
+    Route::post('transaction', [TransactionController::class, 'store'])->name('transaction.store');
 });
 
 Route::get('/dashboard', function () {

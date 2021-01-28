@@ -43,8 +43,8 @@
                         <x-dropdown-link :href="route('product.index')">
                             Manage Product
                         </x-dropdown-link>
-                        @if (Auth::user()->hasRole('admin'))
-                            <x-dropdown-link>
+                        @if (Auth::user()->hasRole('Admin'))
+                            <x-dropdown-link :href="route('staff.index')">
                                 Manage Staff
                             </x-dropdown-link>
                         @endif
