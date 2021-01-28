@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class ProductController extends Controller
     public function index(){
         $products = Product::all();
         $categories = Category::get();
-        return view('product.index', compact('products', 'categories'));
+        $carts = Cart::where('user_id', auth()->user()->id)->get();
+        return view('product.index', compact('products', 'categories', 'carts'));
     }
 
     public function store(Request $request){
@@ -33,5 +35,12 @@ class ProductController extends Controller
         $product->delete($product);
         Storage::delete($product->image);
         return back()->with('success', 'Success to delete product');
+    }
+
+    public function addStock(Product $product, Request $request){
+        $product->where('id', $product->id)->update([
+            'stock' => $product->stock + $request->stock
+        ]);
+        return back();
     }
 }
