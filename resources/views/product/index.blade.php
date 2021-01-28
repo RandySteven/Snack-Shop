@@ -3,6 +3,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="text-center text-3xl">
+                        <b>Manage Product</b>
+                    </div>
                     <table class="w-full text-center border-2 border-black">
                         <thead class="border-2 border-black">
                             <th class="border-2 border-black">Image</th>
@@ -40,7 +43,7 @@
                                     </td>
                                     @if (Auth::user()->hasRole('Admin'))
                                         <td>
-                                            <form action="{{ route('product.delete', $product->slug) }}" method="POST">
+                                            <form action="{{ route('product.delete', $product) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="px-2 py-1 bg-red-700 hover:bg-red-600 text-white rounded">Delete</button>

@@ -32,6 +32,6 @@ class ProductController extends Controller
     public function delete(Product $product){
         $product->delete($product);
         Storage::delete($product->image);
-        return back()->with('success', 'Success to delete product')
+        return back()->with('success', 'Success to delete product');
     }
 }

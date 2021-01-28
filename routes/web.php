@@ -22,7 +22,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('products')->group(function(){
         Route::get('', [ProductController::class, 'index'])->name('product.index');
         Route::post('store', [ProductController::class, 'store'])->name('product.store');
-        Route::delete('delete/{product:slug}', [ProductController::class, 'delete'])->name('product.delete');
+        Route::delete('delete/{product:id}', [ProductController::class, 'delete'])->name('product.delete');
     });
 });
 

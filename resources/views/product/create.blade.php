@@ -10,7 +10,7 @@
     </div>
     <div class="my-4">
         <x-label class="text-blue-600" for="stock" :value="__('Stock')" />
-        <x-input id="stock" class="block mt-1 w-full" type="text" name="stock" :value="old('stock')" required autofocus />
+        <x-input id="stock" class="block mt-1 w-full" type="number" name="stock" :value="old('stock')" required autofocus />
     </div>
     <div class="my-4">
         <x-label class="text-blue-600" for="image" :value="__('Image')" />

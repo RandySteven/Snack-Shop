@@ -40,6 +40,12 @@
 
                     <x-slot name="content">
                         <!-- Authentication -->
+                        <x-dropdown-link :href="route('product.index')">
+                            Manage Product
+                        </x-dropdown-link>
+                        <x-dropdown-link>
+                            Manage Staff
+                        </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
