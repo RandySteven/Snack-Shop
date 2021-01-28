@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Product;
+use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -24,6 +26,18 @@ class TransactionController extends Controller
             $product->decrement('stock', $cart->quantity);
         }
         $carts->delete();
-        return redirect('/products');
+        return redirect('/products')->with('success', 'Success to buy product');
+    }
+
+    public function history(){
+        $transactions = Transaction::where('user_id', auth()->user()->id)->get();
+    }
+
+    public function listTransaction(User $user){
+        $transactions = Transaction::where('user_id', $user->id)->get();
+    }
+
+    public function transactions(){
+        $transactions = Transaction::all();
     }
 }
