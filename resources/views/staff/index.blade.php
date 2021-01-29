@@ -1,4 +1,9 @@
 <x-app-layout>
+
+    <x-slot name="title">
+        Manage Staff
+    </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -15,6 +20,7 @@
                             <th class="border-2 border-black">Salary</th>
                             <th class="border-2 border-black">Phone</th>
                             <th class="border-2 border-black">Address</th>
+                            <th class="border-2 border-black">Transactions</th>
                             <th class="border-2 border-black">Action</th>
                         </thead>
                         <tbody class="border-2 border-black">
@@ -42,6 +48,9 @@
                                     </td>
                                     <td class="border-2 border-black">
                                         {{ $staff->address }}
+                                    </td>
+                                    <td class="border-2 border-black">
+                                        <a href="" class="px-2 py-1 text-white bg-green-600 hover:bg-green-500 rounded">Transactions History</a>
                                     </td>
                                     <td class="border-2 border-black">
                                         <a href="{{ route('staff.edit', $staff) }}" class="px-2 py-1 text-white bg-green-600 hover:bg-green-500 rounded">Edit</a>

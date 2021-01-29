@@ -31,13 +31,16 @@ class TransactionController extends Controller
 
     public function history(){
         $transactions = Transaction::where('user_id', auth()->user()->id)->get();
+        return view('transactions.history', compact('transactions'));
     }
 
     public function listTransaction(User $user){
         $transactions = Transaction::where('user_id', $user->id)->get();
+        return view('transactions.history', compact('transactions'));
     }
 
     public function transactions(){
         $transactions = Transaction::all();
+        return view('transactions.history', compact('transactions'));
     }
 }

@@ -1,4 +1,9 @@
 <x-app-layout>
+
+    <x-slot name="title">
+        Manage Products
+    </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -29,7 +34,9 @@
                                         {{ $product->name }}
                                     </td>
                                     <td class="border-2 border-black">
-                                        {{ $product->category->category }}
+                                        <a href="{{ route('category.show', $product->category) }}">
+                                            {{ $product->category->category }}
+                                        </a>
                                     </td>
                                     <td class="border-2 border-black">Rp. {{ number_format($product->price, 2) }}</td>
                                     <td class="border-2 border-black">

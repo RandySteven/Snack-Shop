@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TransactionController;
@@ -38,6 +39,13 @@ Route::middleware('auth')->group(function(){
     });
 
     Route::post('transaction', [TransactionController::class, 'store'])->name('transaction.store');
+    Route::prefix('transactions')->group(function(){
+        Route::get('', [TransactionController::class, 'transactions'])->name('transactions');
+        Route::get('transaction/{user:name}', [TransactionController::class, 'listTransaction'])->name('list.transaction');
+        Route::get('history', [TransactionController::class, 'history'])->name('transaction.history');
+    });
+
+    Route::get('category/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 });
 
 Route::get('/dashboard', function () {
