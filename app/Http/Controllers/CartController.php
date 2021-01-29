@@ -6,14 +6,18 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+
+
     public function add(Request $request){
-        $attr = $request->all();
-        $attr['product_id'] = $request->get('product_id');
-        $attr['user_id'] = $request->get('user_id');
-        Cart::create($attr);
+        Cart::create([
+            'product_id' => $request->get('product_id'),
+            'user_id' => Auth::user()->id,
+            'quantity' => $request->quantity
+        ]);
         return back();
     }
 

@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TransactionController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function(){
         Route::patch('add-stock/{product:id}', [ProductController::class, 'addStock'])->name('product.add.stock');
     });
 
-    Route::post('add-to-cart', [CartController::class, 'add'])->name('add.cart');
+    Route::post('add-to-cart/', [CartController::class, 'add'])->name('add.cart');
     Route::delete('delete-from-cart/{cart:product_id}', [CartController::class, 'delete'])->name('add.delete');
 
     Route::prefix('staffs')->group(function(){
@@ -43,6 +44,7 @@ Route::middleware('auth')->group(function(){
         Route::get('', [TransactionController::class, 'transactions'])->name('transactions');
         Route::get('transaction/{user:name}', [TransactionController::class, 'listTransaction'])->name('list.transaction');
         Route::get('history', [TransactionController::class, 'history'])->name('transaction.history');
+        Route::get('detail/{transaction:id}', [TransactionController::class, 'detail'])->name('transaction.detail');
     });
 
     Route::get('category/{category:slug}', [CategoryController::class, 'show'])->name('category.show');

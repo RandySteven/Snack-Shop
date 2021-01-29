@@ -82,7 +82,6 @@
             modal.classList.toggle('pointer-events-none')
             body.classList.toggle('modal-active')
         }
-
         </script>
     </body>
 </html>

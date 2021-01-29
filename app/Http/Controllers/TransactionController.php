@@ -43,4 +43,9 @@ class TransactionController extends Controller
         $transactions = Transaction::all();
         return view('transactions.history', compact('transactions'));
     }
+
+    public function detail(Transaction $transaction){
+        $details = $transaction->details()->get();
+        return view('transactions.detail', compact('details'));
+    }
 }

@@ -9,7 +9,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="text-center text-3xl">
-                        <b>Staff</b>
+                        <b>History Transaction</b>
                     </div>
                     <table class="w-full text-center border-2 border-black">
                         <thead class="border-2 border-black">
@@ -27,7 +27,7 @@
                                         {{ $transaction->created_at->format('d M, Y') }}
                                     </td>
                                     <td class="border-2 border-black py-2">
-                                        <a href="" class="px-2 py-1 text-white rounded bg-yellow-700 hover:bg-yellow-600">See Details</a>
+                                        <a href="{{ route('transaction.detail', $transaction) }}" class="px-2 py-1 text-white rounded bg-yellow-700 hover:bg-yellow-600">See Details</a>
                                     </td>
                                 </tr>
                             @endforeach
